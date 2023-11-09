@@ -3,6 +3,8 @@ import InputBox from "./components/InputBox";
 import "./index.css";
 
 function App() {
+  const [amount, setAmount] = useState(0);
+  const [country, setCountry] = useState("au");
   return (
     <div
       className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
