@@ -5,7 +5,7 @@ import "./index.css";
 
 function App() {
   const [amount, setAmount] = useState(0);
-  const [currentCurrency, setCurrentCurrency] = useState("au");
+  const [currentCurrency, setCurrentCurrency] = useState("aud");
   const [convertedCurrency, setConvertedCurrency] = useState("usd");
   const [convertedResult, setConvertedResult] = useState(0);
 
@@ -18,6 +18,7 @@ function App() {
     setConvertedResult(amount);
     setAmount(convertedResult);
   };
+
   const convertCurrency = () => {
     setConvertedResult(amount * currencyData[convertedCurrency]);
   };
@@ -43,13 +44,16 @@ function App() {
                 label="From"
                 amount={amount}
                 currencyOption={options}
-                onCurrencyChange={(currency) => setConvertedResult}
+                onCurrencyChange={(currency) => setCurrentCurrency(currency)}
                 onAmountChange={(amount) => setAmount(amount)}
                 selectedCurrency={currentCurrency}
               />
             </div>
-            <div className="relative w-full h-0.5">
-              <button className="absolute  bg-yellow-400 text-black font-bold left-1/2 -translate-x-1/2 -translate-y-1/2 border-2px-2 px-3 py-2 rounded-lg onClick={swap}">
+            <div className="relativ w-full">
+              <button
+                className="absolute  bg-yellow-400 text-black font-bold left-1/2 -translate-x-1/2 -translate-y-1/2 border-2px-2 px-3 py-2 rounded-lg"
+                onClick={swap}
+              >
                 Swap
               </button>
               <div className="w-full mb-1">
@@ -57,15 +61,18 @@ function App() {
                   label="To"
                   currencyOption={options}
                   amount={convertedResult}
-                  onCurrencyChange={(currency) => setCurrentCurrency(currency)}
-                  selectedCurrency={currentCurrency}
+                  onCurrencyChange={(currency) =>
+                    setConvertedCurrency(currency)
+                  }
+                  selectedCurrency={convertedCurrency}
                 />
               </div>
+
               <button
                 type="submit"
                 className="w-full bg-yellow-400 text-black font-bold px-4 py-3 rounded-lg"
               >
-                Convert
+                Convert {currentCurrency} to {convertedCurrency}
               </button>
             </div>
           </form>
