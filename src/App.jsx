@@ -15,8 +15,10 @@ function App() {
   const swap = () => {
     setCurrentCurrency(convertedCurrency);
     setConvertedCurrency(currentCurrency);
+
     setConvertedResult(amount);
     setAmount(convertedResult);
+    console.log(convertedResult, amount, currentCurrency, convertedCurrency);
   };
 
   const convertCurrency = () => {
@@ -49,7 +51,7 @@ function App() {
                 selectedCurrency={currentCurrency}
               />
             </div>
-            <div className="relativ w-full">
+            <div className="relative w-full">
               <button
                 className="absolute  bg-yellow-400 text-black font-bold left-1/2 -translate-x-1/2 -translate-y-1/2 border-2px-2 px-3 py-2 rounded-lg"
                 onClick={swap}
@@ -61,6 +63,9 @@ function App() {
                   label="To"
                   currencyOption={options}
                   amount={convertedResult}
+                  onAmountChange={(amount) =>
+                    setConvertedResult(convertedResult)
+                  }
                   onCurrencyChange={(currency) =>
                     setConvertedCurrency(currency)
                   }
