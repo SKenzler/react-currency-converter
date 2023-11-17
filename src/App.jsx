@@ -61,14 +61,12 @@ function App() {
               <div className="w-full mb-1">
                 <InputBox
                   label="To"
-                  currencyOption={options}
                   amount={convertedResult}
-                  onAmountChange={(amount) =>
-                    setConvertedResult(convertedResult)
-                  }
+                  currencyOption={options}
                   onCurrencyChange={(currency) =>
                     setConvertedCurrency(currency)
                   }
+                  onAmountChange={(amount) => setConvertedResult(amount)}
                   selectedCurrency={convertedCurrency}
                 />
               </div>
