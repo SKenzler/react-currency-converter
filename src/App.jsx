@@ -15,14 +15,15 @@ function App() {
   const swap = () => {
     setCurrentCurrency(convertedCurrency);
     setConvertedCurrency(currentCurrency);
-
     setConvertedResult(amount);
-    setAmount(convertedResult);
-    console.log(convertedResult, amount, currentCurrency, convertedCurrency);
+    //setAmount(convertedResult);
+    console.log(convertedResult, amount);
   };
 
   const convertCurrency = () => {
-    setConvertedResult(amount * currencyData[convertedCurrency]);
+    let result = amount * currencyData[convertedCurrency];
+    let roundedResult = result.toFixed(2);
+    setConvertedResult(roundedResult);
   };
 
   return (
@@ -61,13 +62,13 @@ function App() {
               <div className="w-full mb-1">
                 <InputBox
                   label="To"
-                  amount={convertedResult}
                   currencyOption={options}
+                  amount={convertedResult}
                   onCurrencyChange={(currency) =>
                     setConvertedCurrency(currency)
                   }
-                  onAmountChange={(amount) => setConvertedResult(amount)}
                   selectedCurrency={convertedCurrency}
+                  amountDisabled
                 />
               </div>
 
