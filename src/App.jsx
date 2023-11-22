@@ -12,12 +12,11 @@ function App() {
   const currencyData = useCurrencyData(currentCurrency);
   const options = Object.keys(currencyData);
 
-  const swap = () => {
-    setCurrentCurrency(convertedCurrency);
-    setConvertedCurrency(currentCurrency);
-    setConvertedResult(amount);
-    //setAmount(convertedResult);
-    console.log(convertedResult, amount);
+  const reset = () => {
+    setCurrentCurrency("aud");
+    setConvertedCurrency("usd");
+    setConvertedResult(0);
+    setAmount(0);
   };
 
   const convertCurrency = () => {
@@ -55,9 +54,9 @@ function App() {
             <div className="relative w-full">
               <button
                 className="absolute  bg-yellow-400 text-black font-bold left-1/2 -translate-x-1/2 -translate-y-1/2 border-2px-2 px-3 py-2 rounded-lg"
-                onClick={swap}
+                onClick={reset}
               >
-                Swap
+                Reset
               </button>
               <div className="w-full mb-1">
                 <InputBox
