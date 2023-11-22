@@ -1,6 +1,6 @@
 # React Currency Converter
 
-![React Currency Converter Screenshot](src/currency-converter-screenshot.png)
+![React Currency Converter Screenshot](currency-converter-screenshot.png)
 
 ## About The Project
 
